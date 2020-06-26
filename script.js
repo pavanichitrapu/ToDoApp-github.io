@@ -7,19 +7,7 @@ var btnSignUp=document.getElementById('signup');
 var loginWrapper=document.getElementById('login-wrapper');
 var logoutUserDiv=document.getElementById('logout-user');
 var logout=document.getElementById("logout");
-logout.addEventListener("click",function(){
-    
-  if(localStorage.getItem('loginStatus')==="true"){
-  todoInsideWrapper.style.display='none';
-  logoutUserDiv.style.display='none';
-  delIcon.style.display='none'; 
-  checkbox.style.display='none';
-  loginWrapper.style.display='flex';
- }
-  loginStatus='';
-  loginStatus='false';
-//window.location.assign("/logout.html");
-});
+
 
 
 
@@ -103,10 +91,15 @@ function createToDoCard(id,enteredText){
     });
     del.appendChild(delIcon);
     todoCard.appendChild(del);
-
     
-
-
+    logout.addEventListener("click",function(){
+      todoInsideWrapper.style.display='none';
+      logoutUserDiv.style.display='none';
+      delIcon.style.display='none'; 
+      checkbox.style.display='none';
+      loginWrapper.style.display='flex';
+      window.localStorage.setItem("loginStatus", false); 
+});  
     checkbox.addEventListener('click',function(){
         var checkedItem=document.getElementById(todoCard.id);
         text.style.setProperty('text-decoration', 'line-through');
